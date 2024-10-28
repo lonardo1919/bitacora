@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if habitat %}
+    <div>
+        <header><h1>listado habitats</h1></header>
+        <main><table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Estancia</th>
+                    <th>Ingreso</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for h in habitat %}
+                <tr>
+                    <td>{{ h.nombre }}</td>
+                    <td>{{ h.duracion_estancia }}</td>
+                    <td>{{ h.fecha_ingreso }}</td>
+                    <td><a href="{% url 'view03' h.id %}">Habitat delete</a></td>
+                    <td><a href="{% url 'view04' h.id %}">Habitat update</a></td>
+                {% endfor %}
+                </tr>
+            </tbody>
+            {% else %}
+            <div><strong>Lsitado Vacío</strong></div>
+
+        </table></main>
+        {% endif %}
+        <footer>
+            <a href="{% url 'view00' %}">Inicio</a>
+            <a href="{% url 'view01' %}">Agregar habitat</a>
+        </footer>
+    </div>
+</body>
+</html>
